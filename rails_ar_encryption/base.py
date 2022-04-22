@@ -3,13 +3,14 @@ from Crypto.Cipher import AES
 from Crypto.Hash import SHA1
 from Crypto.Protocol.KDF import PBKDF2
 
+
 def decrypt(message, key):
     """
     Decrypt message just like it's done on Rails side, see:
     https://github.com/rails/rails/blob/main/activerecord/lib/active_record/encryption/cipher/aes256_gcm.rb
     """
     headers = message["h"]
-    
+
     ciphertext = b64decode(message["p"])
     nonce = b64decode(headers["iv"])
     tag = b64decode(headers["at"])
@@ -20,7 +21,7 @@ def decrypt(message, key):
 
 
 def derive_key(password, salt):
-    """"
+    """
     Derive the key just like it's done on Rails side, see:
     https://github.com/rails/rails/blob/main/activesupport/lib/active_support/key_generator.rb#L39
     """

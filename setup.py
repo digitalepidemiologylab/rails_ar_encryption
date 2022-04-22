@@ -10,7 +10,7 @@ setup(
    description="Decrypts Rails payload.",
    long_description = long_description,
    long_description_content_type = "text/markdown",
-   packages=find_packages(),
+   packages=find_packages(exclude=['tests*']),
    include_package_data=True,
    install_requires=["pycryptodome"],
    classifiers=[
